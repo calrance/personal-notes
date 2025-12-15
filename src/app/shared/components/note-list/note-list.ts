@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
 
 @Component({
   selector: 'app-note-list',
@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   templateUrl: './note-list.html',
 })
 export class NoteList {
-
+  isSelected = input(false);
 }

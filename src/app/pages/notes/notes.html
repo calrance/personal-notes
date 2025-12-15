@@ -1,20 +1,35 @@
-<div class="flex">
-  <div class="flex-1">
-    <div>
-      <h1>Notes</h1>
-      <div class="w-20 h-20 bg-black">55</div>
-      <p-button
-        styleClass="bg-black text-white border-none"
-        icon="pi pi-plus"
-        aria-label="Add"
-      />
+<div class="flex h-screen">
+  <div class="flex-1 bg-gray-700">
+    <div class="p-6 border-b border-gray-350">
+      <div class="flex justify-between items-center mb-6">
+        <h1 class="text-2xl">Notes</h1>
+        <p-button
+          styleClass="bg-gray-500 text-white border-none"
+          icon="pi pi-plus"
+          aria-label="Add"
+        />
+      </div>
+      <p-iconfield>
+        <p-inputicon class="pi pi-search" />
+        <input
+          class="bg-gray-500 text-white border-gray-350 w-full"
+          type="text"
+          pInputText
+          placeholder="Search"
+        />
+      </p-iconfield>
     </div>
+    <app-note-list [isSelected]="true"></app-note-list>
     <app-note-list></app-note-list>
   </div>
-  <div class="flex-4">
-    <input type="text" placeholder="Search" [(ngModel)]="noteTitle" />
-    <p>Last edited {{ lastEditeDate | date : " d MMMM y 'at' h:mm a" }}</p>
-    <hr />
-    <textarea></textarea>
+  <div class="flex-4 flex flex-col h-screen">
+    <div class="flex flex-col px-12 py-12">
+      <input class="text-gray-400" type="text" placeholder="Search" [(ngModel)]="noteTitle" />
+      <p class="text-sm text-gray-400">Last edited {{ lastEditeDate | date : " d MMMM y 'at' h:mm a" }}</p>
+    </div>
+    <hr class="border-gray-500" />
+    <div class="px-12 py-7 flex-1">
+      <textarea class="w-full h-full text-gray-400" [(ngModel)]="noteBody"></textarea>
+    </div>
   </div>
 </div>
