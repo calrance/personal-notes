@@ -15,9 +15,11 @@
     "target": "ES2022",
     "module": "preserve",
     "paths": {
+      "@pages/*": ["./src/app/pages/*"],
       "@components/*": ["./src/app/shared/components/*"],
-      "@styles/*": ["./src/styles/*"],
-      "@store/*": ["./src/app/store/*"]
+      "@pipes/*": ["./src/app/shared/pipes/*"],
+      "@store/*": ["./src/app/store/*"],
+      "@styles/*": ["./src/styles/*"]
     }
   },
   "angularCompilerOptions": {

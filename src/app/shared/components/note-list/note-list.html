@@ -1,13 +1,16 @@
+@if (hasNotes()) { @for (note of notes(); track note.id) {
 <section
   class="px-6 py-4 border-l-4 flex flex-col space-y-2"
-  [class.border-gray-white]="isSelected()"
-  [class.bg-gray-500]="isSelected()"
-  [class.border-gray-500]="!isSelected()"
+  [class.border-gray-white]="note.id === selectedNoteId()"
+  [class.bg-gray-500]="note.id === selectedNoteId()"
+  [class.border-gray-500]="note.id !== selectedNoteId()"
+  (click)="onSelect(note.id)"
 >
-  <h2>Welcome to Notes</h2>
-  <p class="text-sm text-gray-300">
-    This is a simple, distraction-free note-taking app. Click "New Note" to create a new note, or
-    select an existing note from the sidebar to edit it.
-  </p>
-  <p class="text-xs text-gray-400">1 Day ago</p>
+  <div>
+    <div class="block font-medium text-white truncate">
+      {{ note.title || 'Untitled' }}
+    </div>
+    <div class="block text-xs text-gray-200">Edited {{ note.lastEditedAt | timeAgo }}</div>
+  </div>
 </section>
+} }
