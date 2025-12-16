@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { Store } from '@ngrx/store';
 
@@ -22,6 +22,7 @@ export class Notes {
 
   readonly selectedNote = this.store.selectSignal(notesFeature.selectSelectedNote);
   readonly lastEditedAt = computed(() => this.selectedNote().lastEditedAt);
+  readonly searchTerm = signal('');
 
   addNote(): void {
     const note = buildNote();
@@ -52,5 +53,9 @@ export class Notes {
         changes: { content: value, lastEditedAt: new Date().toISOString() },
       })
     );
+  }
+
+  onSearchChange(value: string): void {
+    this.searchTerm.set(value);
   }
 }

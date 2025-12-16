@@ -1,4 +1,4 @@
-@if (hasNotes()) { @for (note of notes(); track note.id) {
+@if (hasNotes()) { @for (note of filteredNotes(); track note.id) {
 <section
   class="px-6 py-4 border-l-4 flex flex-col space-y-2 group hover:cursor-pointer"
   [class.border-gray-white]="note.id === selectedNoteId()"

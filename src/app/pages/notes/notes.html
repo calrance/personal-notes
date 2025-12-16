@@ -17,10 +17,13 @@
           type="text"
           pInputText
           placeholder="Search"
+          #search
+          [value]="searchTerm()"
+          (input)="onSearchChange(search.value)"
         />
       </p-iconfield>
     </div>
-    <app-note-list></app-note-list>
+    <app-note-list [searchTerm]="searchTerm()"></app-note-list>
   </div>
   <div class="flex-4 flex flex-col h-screen">
     @if (selectedNote()) {
