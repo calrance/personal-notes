@@ -30,6 +30,10 @@ export const notesFeature = createFeature({
     on(notesActions.selectNote, (state, { id }) => ({
       ...state,
       selectedNoteId: id,
+    })),
+    on(notesActions.deleteNote, (state, { id }) => ({
+      ...state,
+      notes: state.notes.filter((note) => note.id !== id),
     }))
   ),
   extraSelectors: ({ selectNotelistState }) => {
