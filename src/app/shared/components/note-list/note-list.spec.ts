@@ -11,7 +11,7 @@ describe('NoteList', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [NoteList],
-      providers: [provideStore({ notes: notesFeature.reducer })],
+      providers: [provideStore({ notelist: notesFeature.reducer })],
     })
     .compileComponents();
 

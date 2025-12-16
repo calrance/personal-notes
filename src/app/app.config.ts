@@ -75,7 +75,7 @@ export const appConfig: ApplicationConfig = {
         },
     }),
     provideStore(
-      { notes: notesFeature.reducer },
+      { notelist: notesFeature.reducer },
       { metaReducers: [localStorageMetaReducer] }
     )
 ],

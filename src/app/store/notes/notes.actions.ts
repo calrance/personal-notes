@@ -11,5 +11,6 @@ export const notesActions = createActionGroup({
       changes: Partial<Pick<Note, 'title' | 'content' | 'lastEditedAt'>>;
     }>(),
     'Select Note': props<{ id: string }>(),
+    'Delete Note': props<{ id: string }>(),
   },
 });

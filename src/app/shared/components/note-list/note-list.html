@@ -1,14 +1,20 @@
 @if (hasNotes()) { @for (note of notes(); track note.id) {
 <section
-  class="px-6 py-4 border-l-4 flex flex-col space-y-2"
+  class="px-6 py-4 border-l-4 flex flex-col space-y-2 group hover:cursor-pointer"
   [class.border-gray-white]="note.id === selectedNoteId()"
   [class.bg-gray-500]="note.id === selectedNoteId()"
   [class.border-gray-500]="note.id !== selectedNoteId()"
   (click)="onSelect(note.id)"
 >
-  <div>
-    <div class="block font-medium text-white truncate">
-      {{ note.title || 'Untitled' }}
+  <div class="space-y-2">
+    <div>{{ note.id }}</div>
+    <div class="flex items-center justify-between">
+      <div class="block font-medium text-white truncate">
+        {{ note.title || 'Untitled' }}
+      </div>
+      <div class="hidden group-hover:inline-flex" (click)="onDelete(note.id)">
+        <i class="pi pi-trash text-gray-300"></i>
+      </div>
     </div>
     <div class="block text-xs text-gray-200">Edited {{ note.lastEditedAt | timeAgo }}</div>
   </div>

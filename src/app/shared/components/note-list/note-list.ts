@@ -4,10 +4,11 @@ import { Store } from '@ngrx/store';
 import { TimeAgoPipe } from '@pipes/time-ago-pipe';
 import { notesActions } from '@store/notes/notes.actions';
 import { notesFeature } from '@store/notes/notes.reducer';
+import { ButtonModule } from 'primeng/button';
 
 @Component({
   selector: 'app-note-list',
-  imports: [TimeAgoPipe],
+  imports: [TimeAgoPipe, ButtonModule],
   templateUrl: './note-list.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -20,5 +21,9 @@ export class NoteList {
 
   onSelect(noteId: string): void {
     this.store.dispatch(notesActions.selectNote({ id: noteId }));
+  }
+
+  onDelete(noteId: string): void {
+    this.store.dispatch(notesActions.deleteNote({ id: noteId }));
   }
 }

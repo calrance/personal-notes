@@ -15,7 +15,7 @@ const initialState: NotesState = {
 };
 
 export const notesFeature = createFeature({
-  name: 'notes',
+  name: 'notelist',
   reducer: createReducer(
     initialState,
     on(notesActions.addNote, (state, { note }) => ({
@@ -32,11 +32,16 @@ export const notesFeature = createFeature({
       selectedNoteId: id,
     }))
   ),
-  extraSelectors: ({ selectNotesState }) => {
-    const selectAllNotes = createSelector(selectNotesState, (state) => state.notes);
-    const selectSelectedNoteId = createSelector(selectNotesState, (state) => state.selectedNoteId);
-    const selectSelectedNote = createSelector(selectNotesState, (state) =>
-      state.notes.find((note) => note.id === state.selectedNoteId) ?? state.notes[0] ?? null
+  extraSelectors: ({ selectNotelistState }) => {
+    const selectAllNotes = createSelector(selectNotelistState, (state) => state.notes);
+    const selectSelectedNoteId = createSelector(
+      selectNotelistState,
+      (state) => state.selectedNoteId
+    );
+    const selectSelectedNote = createSelector(
+      selectNotelistState,
+      (state) =>
+        state.notes.find((note) => note.id === state.selectedNoteId) ?? state.notes[0] ?? null
     );
 
     return {
