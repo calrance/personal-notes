@@ -3,11 +3,11 @@ import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
 import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
+import { localStorageStrategy, providePersistStore } from '@ngrx-addons/persist-state';
 import { providePrimeNG } from 'primeng/config';
 import Aura from '@primeuix/themes/aura';
 import { definePreset } from '@primeuix/themes';
 import { provideStore } from '@ngrx/store';
-import { localStorageMetaReducer } from './store/local-storage.metareducer';
 import { notesFeature } from '@store/notes/notes.reducer';
 
 const Noir = definePreset(Aura, {
@@ -58,25 +58,35 @@ const Noir = definePreset(Aura, {
   },
 });
 
+const reducers = {
+  notelist: notesFeature.reducer,
+} as const;
+
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideRouter(routes),
     provideClientHydration(withEventReplay()),
     providePrimeNG({
-        theme: {
-            preset: Noir,
-            options: {
-                cssLayer: {
-                    name: 'primeng',
-                    order: 'theme, base, primeng',
-                },
-            },
+      theme: {
+        preset: Noir,
+        options: {
+          cssLayer: {
+            name: 'primeng',
+            order: 'theme, base, primeng',
+          },
         },
+      },
     }),
-    provideStore(
-      { notelist: notesFeature.reducer },
-      { metaReducers: [localStorageMetaReducer] }
-    )
-],
+    provideStore(reducers),
+    providePersistStore<typeof reducers>({
+      states: [
+        {
+          key: 'notelist',
+          storage: localStorageStrategy,
+          storageKey: 'personal-note-taking',
+        },
+      ],
+    }),
+  ],
 };

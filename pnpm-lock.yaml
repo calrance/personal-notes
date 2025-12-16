@@ -32,6 +32,9 @@ importers:
       '@angular/ssr':
         specifier: ^21.0.0
         version: 21.0.3(@angular/common@21.0.4(@angular/core@21.0.4(@angular/compiler@21.0.4)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@21.0.4(@angular/compiler@21.0.4)(rxjs@7.8.2))(@angular/platform-server@21.0.4(@angular/common@21.0.4(@angular/core@21.0.4(@angular/compiler@21.0.4)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/compiler@21.0.4)(@angular/core@21.0.4(@angular/compiler@21.0.4)(rxjs@7.8.2))(@angular/platform-browser@21.0.4(@angular/common@21.0.4(@angular/core@21.0.4(@angular/compiler@21.0.4)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@21.0.4(@angular/compiler@21.0.4)(rxjs@7.8.2)))(rxjs@7.8.2))(@angular/router@21.0.4(@angular/common@21.0.4(@angular/core@21.0.4(@angular/compiler@21.0.4)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@21.0.4(@angular/compiler@21.0.4)(rxjs@7.8.2))(@angular/platform-browser@21.0.4(@angular/common@21.0.4(@angular/core@21.0.4(@angular/compiler@21.0.4)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@21.0.4(@angular/compiler@21.0.4)(rxjs@7.8.2)))(rxjs@7.8.2))
+      '@ngrx-addons/persist-state':
+        specifier: ^9.0.0
+        version: 9.0.0(@angular/core@21.0.4(@angular/compiler@21.0.4)(rxjs@7.8.2))(@ngrx/store@21.0.0-beta.0(@angular/core@21.0.4(@angular/compiler@21.0.4)(rxjs@7.8.2))(rxjs@7.8.2))(rxjs@7.8.2)
       '@ngrx/store':
         specifier: 21.0.0-beta.0
         version: 21.0.0-beta.0(@angular/core@21.0.4(@angular/compiler@21.0.4)(rxjs@7.8.2))(rxjs@7.8.2)
@@ -1128,6 +1131,20 @@ packages:
 
   '@napi-rs/wasm-runtime@1.1.0':
     resolution: {integrity: sha512-Fq6DJW+Bb5jaWE69/qOE0D1TUN9+6uWhCeZpdnSBk14pjLcCWR7Q8n49PTSPHazM37JqrsdpEthXy2xn6jWWiA==}
+
+  '@ngrx-addons/common@9.0.0':
+    resolution: {integrity: sha512-zLuxsuELrElUNSxm7Xgqfb+SEvInyQH4SSi5SNX1ceuXNqFmowUIckakh/KGY4e87pv6T+OSgCaEPdpMqHZRZg==}
+    peerDependencies:
+      '@angular/core': '>=19.0.0'
+      '@ngrx/store': '>=19.0.0-0'
+      rxjs: '>=7.0.0'
+
+  '@ngrx-addons/persist-state@9.0.0':
+    resolution: {integrity: sha512-7nRy8B8Fcu/KBsfjQvO9iNkOtEp6y1eeRlitbc4KzXBwqJXq23yDmc+RXzqw+fIRw3tcUQ0RK89lCWor8EAcKg==}
+    peerDependencies:
+      '@angular/core': '>=19.0.0'
+      '@ngrx/store': '>=19.0.0-0'
+      rxjs: '>=7.0.0'
 
   '@ngrx/store@21.0.0-beta.0':
     resolution: {integrity: sha512-ogzNXUFW7yz7BTBCeVr6rNotbXMSuim5OLTuXW+BdPT/dpAxQXIuOCLvwJffmjCKA3L5ba3EjhsCic7sOag1VQ==}
@@ -4143,6 +4160,21 @@ snapshots:
       '@emnapi/runtime': 1.7.1
       '@tybys/wasm-util': 0.10.1
     optional: true
+
+  '@ngrx-addons/common@9.0.0(@angular/core@21.0.4(@angular/compiler@21.0.4)(rxjs@7.8.2))(@ngrx/store@21.0.0-beta.0(@angular/core@21.0.4(@angular/compiler@21.0.4)(rxjs@7.8.2))(rxjs@7.8.2))(rxjs@7.8.2)':
+    dependencies:
+      '@angular/core': 21.0.4(@angular/compiler@21.0.4)(rxjs@7.8.2)
+      '@ngrx/store': 21.0.0-beta.0(@angular/core@21.0.4(@angular/compiler@21.0.4)(rxjs@7.8.2))(rxjs@7.8.2)
+      rxjs: 7.8.2
+      tslib: 2.8.1
+
+  '@ngrx-addons/persist-state@9.0.0(@angular/core@21.0.4(@angular/compiler@21.0.4)(rxjs@7.8.2))(@ngrx/store@21.0.0-beta.0(@angular/core@21.0.4(@angular/compiler@21.0.4)(rxjs@7.8.2))(rxjs@7.8.2))(rxjs@7.8.2)':
+    dependencies:
+      '@angular/core': 21.0.4(@angular/compiler@21.0.4)(rxjs@7.8.2)
+      '@ngrx-addons/common': 9.0.0(@angular/core@21.0.4(@angular/compiler@21.0.4)(rxjs@7.8.2))(@ngrx/store@21.0.0-beta.0(@angular/core@21.0.4(@angular/compiler@21.0.4)(rxjs@7.8.2))(rxjs@7.8.2))(rxjs@7.8.2)
+      '@ngrx/store': 21.0.0-beta.0(@angular/core@21.0.4(@angular/compiler@21.0.4)(rxjs@7.8.2))(rxjs@7.8.2)
+      rxjs: 7.8.2
+      tslib: 2.8.1
 
   '@ngrx/store@21.0.0-beta.0(@angular/core@21.0.4(@angular/compiler@21.0.4)(rxjs@7.8.2))(rxjs@7.8.2)':
     dependencies:
