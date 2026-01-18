@@ -19,7 +19,8 @@
       "@components/*": ["./src/app/shared/components/*"],
       "@pipes/*": ["./src/app/shared/pipes/*"],
       "@store/*": ["./src/app/store/*"],
-      "@styles/*": ["./src/styles/*"]
+      "@styles/*": ["./src/styles/*"],
+      "@utils/*": ["./src/app/utils/*"]
     }
   },
   "angularCompilerOptions": {
