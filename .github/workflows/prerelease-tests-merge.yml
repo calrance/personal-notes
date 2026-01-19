@@ -30,7 +30,7 @@ jobs:
       - name: Install Playwright browsers
         run: pnpm exec playwright install --with-deps
       - name: Run unit tests
-        run: pnpm test -- --watch=false --browsers=ChromeHeadless
+        run: pnpm test --watch=false --browsers=ChromiumHeadless
       - name: Run e2e tests
         run: pnpm e2e
       - name: Merge pre-release into main
