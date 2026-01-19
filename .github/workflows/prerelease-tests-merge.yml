@@ -1,0 +1,43 @@
+name: prerelease-tests-merge
+
+on:
+  release:
+    types: [prereleased]
+
+permissions:
+  contents: write
+
+jobs:
+  test_and_merge:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.15.1
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Install Playwright browsers
+        run: pnpm exec playwright install --with-deps
+      - name: Run unit tests
+        run: pnpm test -- --watch=false --browsers=ChromeHeadless
+      - name: Run e2e tests
+        run: pnpm e2e
+      - name: Merge prerelease target into main
+        if: ${{ github.event.release.target_commitish != 'main' }}
+        run: |
+          git fetch --all --tags
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git checkout main
+          git merge --no-ff ${{ github.event.release.target_commitish }} -m "Merge prerelease into main"
+          git push origin main
