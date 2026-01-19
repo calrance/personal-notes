@@ -71,6 +71,17 @@
         },
         "test": {
           "builder": "@angular/build:unit-test"
+        },
+        "e2e": {
+          "builder": "playwright-ng-schematics:playwright",
+          "options": {
+            "devServerTarget": "personal-note-taking:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "personal-note-taking:serve:production"
+            }
+          }
         }
       }
     }
