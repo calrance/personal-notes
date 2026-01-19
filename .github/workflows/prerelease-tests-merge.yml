@@ -1,8 +1,9 @@
 name: prerelease-tests-merge
 
 on:
-  release:
-    types: [prereleased]
+  push:
+    branches:
+      - pre-release
 
 permissions:
   contents: write
@@ -32,12 +33,11 @@ jobs:
         run: pnpm test -- --watch=false --browsers=ChromeHeadless
       - name: Run e2e tests
         run: pnpm e2e
-      - name: Merge prerelease target into main
-        if: ${{ github.event.release.target_commitish != 'main' }}
+      - name: Merge pre-release into main
         run: |
           git fetch --all --tags
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git checkout main
-          git merge --no-ff ${{ github.event.release.target_commitish }} -m "Merge prerelease into main"
+          git merge --no-ff pre-release -m "Merge pre-release into main"
           git push origin main
