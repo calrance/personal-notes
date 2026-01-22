@@ -10,3 +10,7 @@ textarea:focus-visible {
  .p-button:focus-visible {
   outline: none;
 }
+
+input:focus-visible {
+  outline: none;
+}
