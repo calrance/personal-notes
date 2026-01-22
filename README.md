@@ -1,59 +1,61 @@
-# PersonalNoteTaking
+# Personal Notes
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.0.0.
+Minimal note app built with Angular 21, NgRx, PrimeNG, and Tailwind CSS. Notes are saved locally.
 
-## Development server
+## Prerequisites
 
-To start a local development server, run:
+- Node.js 20+
+- pnpm 10+
 
-```bash
-ng serve
-```
+## Quick Start
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+### 1. Install dependencies
 
 ```bash
-ng generate component component-name
+pnpm install
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+### 2. Start the app
 
 ```bash
-ng generate --help
+pnpm start
 ```
 
-## Building
+Open `http://localhost:4200`.
 
-To build the project run:
+## Deployment
+
+Build with `pnpm build` and deploy the output from `dist/personal-note-taking`.
+
+## Available Scripts
+
+- `pnpm start` – run the dev server
+- `pnpm build` – build the production app
+- `pnpm watch` – rebuild on file changes
+- `pnpm test` – run unit tests
+- `pnpm e2e` – run Playwright e2e tests
+- `pnpm serve:ssr:personal-note-taking` – serve the SSR build output
+
+## Testing
+
+Run unit tests or end-to-end tests:
 
 ```bash
-ng build
+pnpm test
+pnpm e2e
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+## Application Features
 
-## Running unit tests
+- 🗒️ **Note CRUD** create, edit, delete, and select notes
+- 🔎 **Search** filter notes by title or content
+- 💾 **Persistence** store notes in local storage
+- ⏱️ **Timestamps** human-friendly "last edited" labels
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+## License
 
-```bash
-ng test
-```
+This project is licensed under the MIT License. See `LICENSE` for details.
 
-## Running end-to-end tests
+## Contact & Support
 
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Please open a GitHub Issue for bugs or questions.
