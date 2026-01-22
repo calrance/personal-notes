@@ -1,6 +1,8 @@
 {
   "name": "personal-note-taking",
-  "version": "0.0.0",
+  "version": "0.1.0",
+  "author": "Calrance Kho",
+  "license": "MIT",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
