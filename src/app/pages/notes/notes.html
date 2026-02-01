@@ -1,61 +1,63 @@
 <div class="flex h-screen">
   <div class="flex-1 bg-gray-700">
-    <div class="p-6 border-b border-gray-350">
-      <div class="flex justify-between items-center mb-6">
-        <h1 class="text-2xl">Notes</h1>
-        <p-button
-          styleClass="bg-gray-500 text-white border-none"
-          icon="pi pi-plus"
-          aria-label="Add"
-          (onClick)="addNote()"
-        />
+    <div class="flex flex-col h-screen">
+      <div class="p-6 border-b border-gray-350">
+        <div class="flex justify-between items-center mb-6">
+          <h1 class="text-2xl">Notes</h1>
+          <p-button
+            styleClass="bg-gray-500 text-white border-none"
+            icon="pi pi-plus"
+            aria-label="Add"
+            (onClick)="addNote()"
+          />
+        </div>
+        <p-iconfield>
+          <p-inputicon class="pi pi-search" />
+          <input
+            class="bg-gray-500 text-white border-gray-350 w-full"
+            type="text"
+            pInputText
+            placeholder="Search"
+            #search
+            [value]="searchTerm()"
+            (input)="onSearchChange(search.value)"
+          />
+        </p-iconfield>
       </div>
-      <p-iconfield>
-        <p-inputicon class="pi pi-search" />
-        <input
-          class="bg-gray-500 text-white border-gray-350 w-full"
-          type="text"
-          pInputText
-          placeholder="Search"
-          #search
-          [value]="searchTerm()"
-          (input)="onSearchChange(search.value)"
-        />
-      </p-iconfield>
+      <app-note-list class="overflow-y-auto" [searchTerm]="searchTerm()"></app-note-list>
     </div>
-    <app-note-list [searchTerm]="searchTerm()"></app-note-list>
   </div>
   <div class="flex-4 flex flex-col h-screen">
     @if (selectedNote()) {
-    <div class="flex flex-col px-12 py-12">
-      <input
-        class="text-white"
-        type="text"
-        placeholder="Here goes the title"
-        #title
-        [value]="selectedNote().title"
-        (input)="onTitleChange(title.value)"
-      />
-      @if (lastEditedAt()) {
-      <p class="text-sm text-gray-400">
-        Last edited {{ lastEditedAt() | date : " d MMMM y 'at' h:mm a" }}
-      </p>
-      }
-    </div>
-    <hr class="border-gray-500" />
-    <div class="px-12 py-7 flex-1">
-      <textarea
-        class="w-full h-full text-white"
-        placeholder="Write your content here..."
-        #content
-        [value]="selectedNote().content"
-        (input)="onContentChange(content.value)"
-      ></textarea>
-    </div>
+      <div class="flex flex-col px-12 py-12">
+        <input
+          class="text-white"
+          type="text"
+          placeholder="Here goes the title"
+          #title
+          [value]="selectedNote().title"
+          (input)="onTitleChange(title.value)"
+        />
+        @if (lastEditedAt()) {
+          <p class="text-sm text-gray-400">
+            Last edited {{ lastEditedAt() | date: " d MMMM y 'at' h:mm a" }}
+          </p>
+        }
+      </div>
+      <hr class="border-gray-500" />
+      <div class="px-12 py-7 flex-1">
+        <textarea
+          class="w-full h-full text-white"
+          placeholder="Write your content here..."
+          #content
+          [value]="selectedNote().content"
+          (input)="onContentChange(content.value)"
+        ></textarea>
+      </div>
     } @else {
-    <div class="px-12 py-12 text-white">
-      <p>No note selected. Choose a note from the list or create a new one.</p>
-    </div>
+      <div class="px-12 py-12 text-white">
+        <p>No note selected. Choose a note from the list or create a new one.</p>
+      </div>
     }
   </div>
 </div>
