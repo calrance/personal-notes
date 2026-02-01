@@ -1,1 +1,50 @@
 <router-outlet />
+
+@if (showMobileWarning()) {
+  <div
+    class="mobile-warning-backdrop"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Mobile experience notice"
+  >
+    <div class="mobile-warning">
+      <h2>Heads up 👋</h2>
+      <p>This app is built for desktop right now.</p>
+      <p>If you’d love a mobile version, let me know by opening a feature request on GitHub.</p>
+      <div class="mobile-warning-actions">
+        <a
+          class="mobile-warning-link"
+          href="https://github.com/calrance/personal-notes/issues"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Request on GitHub
+        </a>
+        <button class="mobile-warning-dismiss" type="button" (click)="dismissMobileWarning()">
+          Dismiss
+        </button>
+      </div>
+    </div>
+  </div>
+}
+
+<div class="floating-links" aria-label="Quick links">
+  <a
+    class="floating-link"
+    href="https://github.com/"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Open GitHub"
+  >
+    <i class="pi pi-github" aria-hidden="true"></i>
+  </a>
+  <a
+    class="floating-link"
+    href="https://calrance.dev"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Open calrance.dev"
+  >
+    <i class="pi pi-home" aria-hidden="true"></i>
+  </a>
+</div>
