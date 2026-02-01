@@ -2,6 +2,10 @@
 
 Minimal note app built with Angular 21, NgRx, PrimeNG, and Tailwind CSS. Notes are saved locally.
 
+## Demo
+
+https://notes.calrance.dev
+
 ## Prerequisites
 
 - Node.js 20+
